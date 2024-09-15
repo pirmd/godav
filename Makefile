@@ -4,7 +4,7 @@ GO = go
 LDFLAGS_STATIC = -linkmode 'external' -extldflags '-static'
 LDFLAGS        = ${LDFLAGS_STATIC} -w -s
 
-BIN        = godav
+BIN        = godavd
 SRC_MOD    = go.mod
 SRC       != ${GO} list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}} {{end}}' ./...
 SRC_TEST  != ${GO} list -f '{{range .TestGoFiles}}{{$$.Dir}}/{{.}} {{end}}' ./...
