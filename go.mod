@@ -1,4 +1,4 @@
-module github.com/pirmd/godav
+module github.com/pirmd/godavd
 
 go 1.22.1
 

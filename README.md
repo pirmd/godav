@@ -1,14 +1,14 @@
-# GODAV - GO essential webDAV server
+# GODAVD - GO essential webDAV server
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/pirmd/godav.svg)](https://pkg.go.dev/github.com/pirmd/godav)
-[![Go Report Card](https://goreportcard.com/badge/github.com/pirmd/godav)](https://goreportcard.com/report/github.com/pirmd/godav)
+[![Go Reference](https://pkg.go.dev/badge/github.com/pirmd/godavd.svg)](https://pkg.go.dev/github.com/pirmd/godavd)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pirmd/godavd)](https://goreportcard.com/report/github.com/pirmd/godavd)
 
-`godav` is a CGI application that implements essential webdav functionalities.
+`godavd` is a CGI application that implements essential webdav functionalities.
 
-`godav` is intentionally kept as minimal as possible, leaving most of the heavy
+`godavd` is intentionally kept as minimal as possible, leaving most of the heavy
 work to whatever battle-tested http stack you want to use to deploy it. 
 
-`godav` simply glues together [webdav package](https://pkg.go.dev/golang.org/x/net/webdav) with
+`godavd` simply glues together [webdav package](https://pkg.go.dev/golang.org/x/net/webdav) with
 [standard's library CGI module](http://pkg.go.dev/net/http/cgi).
 
 ## INSTALLATION
