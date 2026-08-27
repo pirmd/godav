@@ -1,1 +1,9 @@
+# Binaries
 godavd
+godav
+
+# Go
+*~
+.DS_Store
+.idea
+.vscode
