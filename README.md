@@ -20,8 +20,43 @@ expecting to find it.
 ## CONFIGURATION
 
 Configuration is done using environment variables:
-- `GODAV_DIR`: directory that shall be exposed through WebDAV server. Default to DOCUMENT_ROOT;
-- `GODAV_URL_PREFIX`: URL prefix. Default to SCRIPT_NAME.
+- `GODAV_DIR`: directory that shall be exposed through WebDAV server. Defaults to `DOCUMENT_ROOT` (Apache CGI). **Must be set if DOCUMENT_ROOT is not available.**
+- `GODAV_URL_PREFIX`: URL prefix for WebDAV requests. Defaults to `SCRIPT_NAME` (Apache CGI), then falls back to `/`.
+
+### Example with Apache CGI
+```apache
+ScriptAlias /webdav/ /path/to/godavd/
+<Directory /path/to/godavd>
+    SetEnv GODAV_DIR /path/to/shared/folder
+    SetEnv GODAV_URL_PREFIX /webdav/
+</Directory>
+```
+
+### Example with Docker
+```bash
+docker run -e GODAV_DIR=/data -e GODAV_URL_PREFIX=/webdav -v /host/data:/data godavd
+```
+
+### Example with Hetzner StorageBox
+To use godavd with a [Hetzner StorageBox](https://www.hetzner.com/storage/storage-box) (which provides WebDAV access):
+
+1. Mount the StorageBox locally using `rclone`:
+   ```bash
+   rclone mount storagebox: /mnt/storagebox --vfs-cache-mode full
+   ```
+
+2. Run godavd with the mounted directory:
+   ```bash
+   GODAV_DIR=/mnt/storagebox godavd
+   ```
+
+3. Access via a WebDAV client or browser-based frontend.
+
+## CORS SUPPORT
+
+godavd includes CORS headers by default, allowing it to be used as a backend for web-based frontends (e.g., JavaScript WebDAV clients).
+
+If you need to restrict CORS origins, modify the `enableCORS` function in `main.go`.
 
 ## CONTRIBUTION
 
