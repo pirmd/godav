@@ -15,9 +15,20 @@ func main() {
 	}
 
 	prefix := os.Getenv("GODAV_URL_PREFIX")
-	if dir == "" {
-		dir = os.Getenv("SCRIPT_NAME")
+	if prefix == "" {
+		prefix = os.Getenv("SCRIPT_NAME")
 	}
+	if prefix == "" {
+		prefix = "/"
+	}
+
+	// Validate directory
+	if dir == "" {
+		log.Fatal("GODAV_DIR or DOCUMENT_ROOT environment variable must be set")
+	}
+
+	// Log startup
+	log.Printf("Starting godavd with DIR=%s, PREFIX=%s", dir, prefix)
 
 	davHandler := &webdav.Handler{
 		Prefix:     prefix,
